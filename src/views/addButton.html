@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <!-- bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+
+    <!--fontawesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+
+    <!-- css propio -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container-fluid d-flex h-100 flex-column">
+      <div class="row flex-grow-1">
+        <div id="mapa" class="col-8 portlet-container">
+          <div>
+            <a href="http://localhost:3000/map" class="letrasLink">
+              <i class="fas fa-home fa-2x">Mapa</i>
+            </a>
+          </div>
+          <div>
+            <a href="http://localhost:3000/deleteButton" class="letrasLink"
+              ><i class="fas fa-trash fa-2x">Borrar</i
+            ></a>
+          </div>
+        </div>
+        <div class="col-4 portlet-container">
+          <div class="form-group">
+            <input
+              type="text"
+              id="ubicacion"
+              class="form-control"
+              placeholder="Nombre de la ubicacion de la camara"
+            />
+            <input
+              type="text"
+              id="stream"
+              class="form-control"
+              placeholder="ruta del stream de la camara"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="addButton.js"></script>
+</html>
