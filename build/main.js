@@ -103,7 +103,11 @@ const routes = __webpack_require__(/*! ./routes */ "./src/routes.js");
 
 const cors = __webpack_require__(/*! cors */ "cors");
 
-const app = express(); // set the default views folder
+const ejs = __webpack_require__(/*! ejs */ "ejs");
+
+const app = express(); // //setear para que puedas usar ejs
+// app.set('view engine', 'ejs');
+// set the default views folder
 
 app.set('views', __dirname + '/views');
 app.engine('html', __webpack_require__(/*! ejs */ "ejs").renderFile);
@@ -129,7 +133,7 @@ __webpack_require__(/*! mongoose-double */ "mongoose-double")(mongoose);
 
 const ObjectId = mongoose.Schema.Types.ObjectId;
 var SchemaTypes = mongoose.Schema.Types;
-const ButtonsSchema = new mongoose.Schema({
+const ButtonSchema = new mongoose.Schema({
   ubicacion: String,
   stream: String,
   status: {
@@ -146,10 +150,10 @@ const ButtonsSchema = new mongoose.Schema({
 const MapaSchema = new mongoose.Schema({
   route: String
 });
-const Buttons = mongoose.model("Buttons", ButtonsSchema);
+const Button = mongoose.model("Button", ButtonSchema);
 const Mapa = mongoose.model("Mapa", MapaSchema);
 module.exports = {
-  Buttons: Buttons,
+  Button: Button,
   Mapa: Mapa
 };
 
@@ -172,8 +176,7 @@ const multer = __webpack_require__(/*! multer */ "multer");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    //    cb(null,'./uploads/');
-    cb(null, './src/public/img/');
+    cb(null, "./src/public/img/");
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname);
@@ -188,53 +191,46 @@ const models = __webpack_require__(/*! ./models */ "./src/models.js");
 module.exports = app => {
   //insert usuarios
   app.post("/Buttons", jsonParser, async (req, res) => {
-    const Button = await new models.Camera(req.body).save();
-    res.json(camera);
-  }); //get all cameras
+    const Button = await new models.Button(req.body).save();
+    res.json(Button);
+  }); //get all Buttons
 
   app.get("/Buttons", async (req, res) => {
-    const cams = await models.Camera.find({});
+    const cams = await models.Button.find({});
     res.json(cams);
-  }); //get camera from ubicacion
+  }); //get Button from ubicacion
 
   app.get("/Buttons/:ubicacion", async (req, res) => {
-    const cam = await models.Camera.find({
+    const cam = await models.Button.find({
       ubicacion: req.params.ubicacion
     });
     res.json(cam);
-  }); //delete camera from ubicacion
+  }); //delete Button from ubicacion
 
   app.delete("/Buttons/:ubicacion", async (req, res) => {
-    const cam = await models.Camera.findOneAndDelete({
+    const cam = await models.Button.findOneAndDelete({
       ubicacion: req.params.ubicacion
     });
     res.json(cam.ubicacion);
   }); //cambiar el status de una camara
 
   app.patch("/Buttons/:ubicacion", jsonParser, async (req, res) => {
-    const cam = await models.Camera.findOneAndUpdate({
+    const cam = await models.Button.findOneAndUpdate({
       ubicacion: req.params.ubicacion
     }, {
       status: req.body.status
     });
     res.json("listo");
-  }); //obtain cameras status, igual devuelvo camaras pero aca las saco de otro lugar
+  }); //obtain Buttons status, igual devuelvo camaras pero aca las saco de otro lugar
 
   app.get("/status", async (req, res) => {
     let itBe = await request("http://localhost:3000/Buttons", {
       json: true
     }, function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        //console.log(body);
         res.json(body);
       }
     });
-  }); //guardar ruta del mapa
-
-  app.post("/mapa", upload.single('productImage'), async (req, res) => {
-    console.log(req.file.path);
-    const mapa = await new models.Mapa(req.file.originalname).save();
-    res.json('listo');
   }); //te devuelve el ultimo mapa
 
   app.get("/mapa", jsonParser, async (req, res) => {
@@ -243,14 +239,13 @@ module.exports = app => {
       _id: -1
     }).limit(1);
     res.json(mapa);
-  }); //probar subir imagenes
+  }); // guarda la imagen en una carpeta y la ruta en la bd
 
-  app.post("/imagenes", upload.single('productImage'), async (req, res) => {
-    console.log(req.file.originalname);
+  app.post("/addMap", upload.single("productImage"), async (req, res) => {
     const mapa = await new models.Mapa({
       route: req.file.originalname
     }).save();
-    res.json('listo');
+    res.render("addMap.html");
   }); //renders
   //no fue la mejor idea dejarle de nombre de ruta map, pero no sabia que iba a terminar guardando rutas de mapas
 

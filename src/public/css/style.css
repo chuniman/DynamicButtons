@@ -16,6 +16,20 @@ body {
 .btn-circle{
 	border-radius: 100%/66%;}
 
-.letrasLink{
+.letrasBlancas{
 	color: white;
+}
+
+.pushbar{
+	background-color: black;
+	color: white;
+	padding: 20px;
+}
+
+.pushbar .btn-cerrar{
+	text-align: right;
+}
+
+.itemLista{
+	padding: 10px;
 }

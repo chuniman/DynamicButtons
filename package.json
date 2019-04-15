@@ -12,6 +12,7 @@
     "mongoose": "^5.4.20",
     "mongoose-double": "0.0.1",
     "multer": "^1.4.1",
+    "nunjucks": "^3.2.0",
     "request": "^2.88.0"
   },
   "devDependencies": {},

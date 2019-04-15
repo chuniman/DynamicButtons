@@ -4,7 +4,7 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 
 var SchemaTypes = mongoose.Schema.Types;
 
-const ButtonsSchema = new mongoose.Schema({
+const ButtonSchema = new mongoose.Schema({
   ubicacion: String,
   stream: String,
   status: { type: String, default: "success" },
@@ -20,11 +20,11 @@ const MapaSchema = new mongoose.Schema({
   route: String
 });
 
-const Buttons = mongoose.model("Buttons", ButtonsSchema);
+const Button = mongoose.model("Button", ButtonSchema);
 
 const Mapa = mongoose.model("Mapa", MapaSchema);
 
 module.exports = {
-  Buttons: Buttons,
+  Button: Button,
   Mapa: Mapa,
 };
