@@ -10,7 +10,6 @@ $(document).ready(function() {
   $(document).on("click", "#mapa div button", function() {
     var ubication = $(this).attr("id");
     alert($(this).attr("id"));
-    console.log(ubication);
   });
 });
 
@@ -18,15 +17,15 @@ $(document).ready(function() {
 setInterval(function () {
   $.ajax({
     // 3001 es para ir al pasamanos luego lo tengo que cambiar a 3000
-    url: "http://localhost:3000/status",
+    url: "/status",
     type: "GET",
     contentType: "application/json",
     success: function(data) {
       let buttonsStatus = {};
 
       for (let index = 0; index < data.length; index++) {
-        console.log(index);
-        console.log(buttonsApp.buttonsStatus[data[index]["ubicacion"]]);
+        // console.log(index);
+        // console.log(buttonsApp.buttonsStatus[data[index]["ubicacion"]]);
         
       }
       for (let index = 0; index < data.length; index++) {

@@ -36,7 +36,7 @@ $(document).ready(function() {
             })
           );
           $.ajax({
-            url: "http://localhost:3000/Buttons",
+            url: "/Buttons",
             type: "POST",
             contentType: "application/json",
             dataType: "json",

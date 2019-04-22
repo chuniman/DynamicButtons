@@ -9,7 +9,7 @@ var buttonsApp = new Vue({
 // para mostrar los botones de las camaras en la pantalla
 $(document).ready(function() {
     $.ajax({
-      url: "http://localhost:3000/Buttons",
+      url: "/Buttons",
       type: "GET",
       contentType: "application/json",
       success: function(data) {
@@ -46,13 +46,12 @@ $(document).ready(function() {
 $(document).ready(function() {
     var imgName = "";
     $.ajax({
-      url: "http://localhost:3000/mapa",
+      url: "/mapa",
       type: "GET",
       contentType: "application/json",
       dataType: "json",
       success: function(data) {
         document.body.style.backgroundImage = "url(/img/" + data["route"] + ")";
-        console.log(data["route"]);
       }
     });
   

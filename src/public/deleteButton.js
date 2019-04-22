@@ -4,7 +4,7 @@ $(document).ready(function() {
   $(document).on("click", "#mapa div button", function() {
     var ubication = $(this).attr("id");
     $.ajax({
-      url: "http://localhost:3000/Buttons/" + ubication,
+      url: "/Buttons/" + ubication,
       type: "DELETE",
       contentType: "application/json",
       dataType: "json",
