@@ -1,7 +1,7 @@
 
 //delete Buttons
 $(document).ready(function() {
-  $(document).on("click", "#mapa div button", function() {
+  $(document).on("click", "#mapa div div", function() {
     var ubication = $(this).attr("id");
     $.ajax({
       url: "/Buttons/" + ubication,

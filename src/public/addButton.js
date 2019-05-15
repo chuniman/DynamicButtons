@@ -4,7 +4,7 @@ $(document).ready(function() {
   var fadeDuration = 1000;
   // $(document).mousedown(function(e) {
    $(document).on("click",".pushbar_overlay",function(e) {
-
+//.pushbar_overlay esto es lo que va como selector del click
     if (e.which == 1) {
       // if (!(e.pageX > 1250 && e.pageY < 80) && !(e.pageX < 130 && e.pageY < 55)) {
         if ($("#ubicacion").val() != "" && $("#stream").val() != "") {
@@ -19,11 +19,11 @@ $(document).ready(function() {
             })
             .append(
               $(
-                '<button type="button" class="btn btn-circle btn-success" id=' +
+                '<div type="button" class="btn btn-circle btn-success" id=' +
                   ubicacion +
                   ">" +
                   ubicacion +
-                  "</button>"
+                  "</div>"
               )
             )
             .appendTo("#mapa");

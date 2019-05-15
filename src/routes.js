@@ -57,7 +57,7 @@ module.exports = app => {
   //obtain Buttons status, igual devuelvo camaras pero aca las saco de otro lugar
   app.get("/status", async (req, res) => {
     let itBe = await request(
-      "http://192.168.0.118:3001/Buttons",
+      "http://localhost:3001/Buttons",
       { json: true },
       function(error, response, body) {
         if (!error && response.statusCode == 200) {

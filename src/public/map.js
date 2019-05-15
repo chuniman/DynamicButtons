@@ -7,7 +7,7 @@ var buttonsApp = new Vue({
 
 //para obtener id
 $(document).ready(function() {
-  $(document).on("click", "#mapa div button", function() {
+  $(document).on("click", "#mapa div div", function() {
     var ubication = $(this).attr("id");
     alert($(this).attr("id"));
   });
@@ -24,8 +24,6 @@ setInterval(function () {
       let buttonsStatus = {};
 
       for (let index = 0; index < data.length; index++) {
-        // console.log(index);
-        // console.log(buttonsApp.buttonsStatus[data[index]["ubicacion"]]);
         
       }
       for (let index = 0; index < data.length; index++) {
@@ -43,13 +41,13 @@ setInterval(function () {
           })
           .append(
             $(
-              '<button type="button" class="btn btn-circle btn-' +
+              '<div type="button" class="btn btn-circle btn-' +
                 data[index]["status"] +
                 '" id=' +
                 ubicacion +
                 ">" +
                 ubicacion +
-                "</button>"
+                "</div>"
             )
           )
           .appendTo("#mapa");
