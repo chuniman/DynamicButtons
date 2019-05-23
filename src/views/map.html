@@ -26,9 +26,34 @@
 
     <!-- css propio -->
     <link rel="stylesheet" href="css/style.css" />
+    <audio id="myAudio">
+        <source src="audio/Danger.mp3" type="audio/mpeg">
+    </audio>
   </head>
 
   <body>
+    <!-- Esto es para Highcharts lo que me hace las graficas-->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+    <div id="nav" class="row justify-content-center">
+      <!-- <p class="col-3" style="color:red">Alarma: {{ cantidadDanger }}</p> -->
+      <div class="col-4">
+        <div
+          id="container"
+          style="min-width: 310px; height: 200px; max-width: 600px; margin: 0 auto"
+        ></div>
+      </div>
+
+      <!-- <p class="col-3" style="color:darkgoldenrod">
+        Baja bateria: {{ cantidadWarning }}
+      </p> -->
+      <!-- <p class="col-3" style="color:green">OK: {{ cantidadSuccess }}</p> -->
+      <div class="col-4 offset-3" style="background-color:red">
+        <h3 style="color:white">ALARMA: {{ cantidadDanger }}</h3>
+      </div>
+    </div>
     <div class="row">
       <div class="col-4">
         <div>
@@ -78,6 +103,9 @@
 
     <!-- JS de Vue.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+
+    <!-- JS de Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
     <!-- JS de Pushbar -->
     <script src="pushbar.js"></script>

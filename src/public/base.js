@@ -6,6 +6,16 @@ var buttonsApp = new Vue({
   }
 });
 
+var buttonsNav = new Vue({
+  el: "#nav",
+  data: {
+    cantidadDanger:0,
+    cantidadWarning:0,
+    cantidadSuccess:0,
+    cantidadDark:0
+  }
+});
+
 // para mostrar los botones de las camaras en la pantalla
 $(document).ready(function() {
   $.ajax({
@@ -37,18 +47,10 @@ $(document).ready(function() {
           .appendTo("#mapa");
         $("#"+ubicacion).draggable();
       }
-      // $("#mapa div button").draggable();
       buttonsApp.buttonsStatus = buttonsStatus;
     }
   });
 });
-
-// //para poder mover los botones
-// $(document).ready(function() {
-//   $(document).on("load",function() {
-//   $("#mapa div button").draggable({ cancel: false});
-//   })
-// });
 
 //ir a buscar a el nombre de la ultima imagen a la bd
 $(document).ready(function() {
@@ -64,4 +66,5 @@ $(document).ready(function() {
   });
 
   document.body.style.backgroundImage = "url(/img/" + imgName + ")";
+  document.body.setAttribute("style", "background-repeat: no-repeat;background-size: cover");
 });
