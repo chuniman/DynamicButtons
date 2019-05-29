@@ -27,7 +27,7 @@ $(document).ready(function() {
       for (let index = 0; index < data.length; index++) {
         buttonsStatus[data[index]["ubicacion"]] = data[index]["status"];
         var ubicacion = data[index]["ubicacion"];
-        var div = $('<div class="image-wrapper" id="' + ubicacion + '">');
+        var div = $('<div class="image-wrapper" >');
         div
           .css({
             left: data[index]["X"] + "px",
